@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Order History</h2>
+{% for order in orders %}
+  <div class="card">
+    <h3>Order #{{ order.id }} — Rs. {{ order.total }}</h3>
+    <p>Placed on {{ order.created_at }}</p>
+    <ul>
+      {% for item in order.items.all %}
+        <li>{{ item.book.title }} — {{ item.quantity }} × Rs. {{ item.price }} (Rs. {{ item.line_total }})</li>
+      {% endfor %}
+    </ul>
+  </div>
+{% empty %}
+  <p>No orders yet.</p>
+{% endfor %}
+{% endblock %}

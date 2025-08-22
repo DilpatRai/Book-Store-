@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block title %}Home — Bookstore{% endblock %}
+{% block content %}
+<h1>Welcome to the Bookstore</h1>
+<p>Browse our latest titles and start reading today.</p>
+<a class="btn" href="{% url 'book_list' %}">Browse Books</a>
+{% endblock %}

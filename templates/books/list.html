@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Books</h2>
+<form method="get" class="search">
+  <input type="text" name="q" placeholder="Search by title or author" value="{{ q }}">
+  <button class="btn">Search</button>
+</form>
+<div class="grid">
+  {% for b in books %}
+    <div class="card">
+      <h3><a href="{% url 'book_detail' b.pk %}">{{ b.title }}</a></h3>
+      <p>by {{ b.author }}</p>
+      <p><b>Rs. {{ b.price }}</b></p>
+      <a class="btn" href="{% url 'book_detail' b.pk %}">View</a>
+    </div>
+  {% empty %}
+    <p>No books found.</p>
+  {% endfor %}
+</div>
+{% endblock %}
